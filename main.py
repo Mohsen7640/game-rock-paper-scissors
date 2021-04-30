@@ -16,8 +16,12 @@ def get_system_choice():
 
 
 def find_winner(user, system):
-	choice = user + system
-	return RULES[choice]
+	if (RULES[user] + 1) % 3 == RULES[system]:
+		return system
+	elif RULES[user] == RULES[system]:
+		return None
+	else:
+		return user
 
 
 def update_scoreboard(result):
@@ -49,10 +53,10 @@ def play():
 		system_choice = get_system_choice()
 		winner = find_winner(user_choice, system_choice)
 
-		if winner == 1:
+		if user_choice == winner:
 			msg = 'You win'
 			result['user'] += 1
-		elif winner == 2:
+		elif system_choice == winner:
 			msg = 'You lose'
 			result['system'] += 1
 		else:

@@ -12,17 +12,9 @@ GAME_CHOICES = ('r', 'p', 's')
 2 --> Win system, Lose user
 """
 RULES = {
-	'rr': 0,
-	'rp': 2,
-	'rs': 1,
-
-	'pr': 1,
-	'pp': 0,
-	'ps': 2,
-
-	'sr': 2,
-	'sp': 1,
-	'ss': 0
+	'r': 0,
+	'p': 1,
+	's': 2
 }
 
 scoreboard = {
