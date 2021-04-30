@@ -3,6 +3,7 @@ import random
 
 
 def get_user_choice():
+
 	user_input = input('Enter your choice please (r, p, s): ')
 	if user_input not in GAME_CHOICES:
 		print("Oops!!, wrong choice, try again please...")
@@ -12,19 +13,22 @@ def get_user_choice():
 
 
 def get_system_choice():
+
 	return random.choice(GAME_CHOICES)
 
 
 def find_winner(user, system):
+
 	if (RULES[user] + 1) % 3 == RULES[system]:
 		return system
 	elif RULES[user] == RULES[system]:
 		return None
-	else:
-		return user
+
+	return user
 
 
 def update_scoreboard(result):
+
 	if result['user'] == 3:
 		scoreboard['user'] += 1
 		msg = 'You win'
@@ -40,12 +44,19 @@ def update_scoreboard(result):
 
 
 def play_again():
+
 	user_input = input('Do you want to play again? (y/n)')
+
+	if user_input not in ('Y', 'y', 'N', 'n'):
+		print("Oops!!, wrong choice, try again please...")
+		return play_again()
+
 	if user_input.lower() == 'y':
 		play()
 
 
 def play():
+
 	result = {'user': 0, 'system': 0}
 
 	while result['user'] < 3 and result['system'] < 3:
